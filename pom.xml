@@ -5,8 +5,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.4</version> <!-- Adjust the Spring Boot version if needed -->
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.6.4</version>
+        <relativePath/> 
     </parent>
     <groupId>com.unige</groupId>
     <artifactId>triangle</artifactId>
@@ -42,6 +42,13 @@
             <scope>test</scope>
         </dependency>
 
+		<dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>1.4.0</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Exclude JUnit 4 -->
         <dependency>
             <groupId>junit</groupId>
@@ -67,7 +74,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version> <!-- Adjust the JaCoCo version if needed -->
+                <version>0.8.7</version> 
                 <executions>
                     <execution>
                         <goals>
