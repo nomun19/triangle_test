@@ -10,51 +10,42 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class TriangleApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
-
-	@Test
-    void testValidTriangle() {
-        Triangle triangle = new Triangle(3, 4, 5);
-        assertTrue(triangle.isValid());
-    }
 
     @Test
-    void testInvalidTriangle() {
-        Triangle triangle = new Triangle(1, 2, 3);
-        assertFalse(triangle.isValid());
-    }
-
-    @Test
-    void testEquilateralTriangle() {
-        Triangle triangle = new Triangle(2, 2, 2);
+    void testCheckEquilateralType() {
+        Triangle triangle = new Triangle(2,2,2);
+        assertEquals(true, triangle.isValid());
         assertEquals(TriangleType.Equilateral, triangle.CheckType());
+        assertEquals(false, triangle.isRight());
     }
 
     @Test
-    void testIsoscelesTriangle() {
-        Triangle triangle = new Triangle(3, 3, 2);
+    void testCheckIsoscelesType() {
+        Triangle triangle = new Triangle(2,2,1);
+        assertEquals(true, triangle.isValid());
         assertEquals(TriangleType.Isosceles, triangle.CheckType());
+        assertEquals(false, triangle.isRight());
     }
 
     @Test
-    void testScaleneTriangle() {
-        Triangle triangle = new Triangle(3, 4, 5);
+    void testCheckScalenesType() {
+        Triangle triangle = new Triangle(4,2,5);
+        assertEquals(true, triangle.isValid());
         assertEquals(TriangleType.Scalene, triangle.CheckType());
+        assertEquals(false, triangle.isRight());
     }
 
     @Test
-    void testRightTriangle() {
+    void testCheckInvalidType() {
+        Triangle triangle = new Triangle(4,2,1);
+        assertEquals(false, triangle.isValid());
+        assertEquals(TriangleType.INVALID, triangle.CheckType());
+        assertEquals(false, triangle.isRight());
+    }
+
+    @Test
+    void testRight(){
         Triangle triangle = new Triangle(3, 4, 5);
-        assertTrue(triangle.isRight());
+        assertEquals(true, triangle.isRight()); 
     }
-
-    @Test
-    void testNotRightTriangle() {
-        Triangle triangle = new Triangle(2, 3, 4);
-        assertFalse(triangle.isRight());
-    }
-
 }
